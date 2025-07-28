@@ -10,7 +10,7 @@ categorize(
   threshold_intensity_range = 0.1,
   threshold_minimum_for_intensity_maximum = 0.3,
   threshold_bonus_sigmoidal_AIC = 0,
-  threshold_sm_tmax_IntensityRatio = 0.85,
+  threshold_sm_tmax_IntensityRatio = 0.75,
   threshold_dsm_tmax_IntensityRatio = 0.75,
   threshold_AIC = -10,
   threshold_t0_max_int = 0.05,
