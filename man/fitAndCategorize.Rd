@@ -12,17 +12,18 @@ fitAndCategorize(
   n_runs_min_dsm = 20,
   n_runs_max_dsm = 500,
   showDetails = FALSE,
-  startList_sm = list(maximum = 1, slopeParam = 1, midPoint = 0.33),
-  lowerBounds_sm = c(maximum = 0.3, slopeParam = 0.01, midPoint = -0.52),
-  upperBounds_sm = c(maximum = 1.5, slopeParam = 180, midPoint = 1.15),
+  startList_sm = list(h0 = 0, maximum = 1, slopeParam = 1, midPoint = 0.33),
+  lowerBounds_sm = c(h0 = 0, maximum = 0.3, slopeParam = 0.01, midPoint = -0.52),
+  upperBounds_sm = c(h0 = 0.3, maximum = 1.5, slopeParam = 180, midPoint = 1.15),
   min_Factor_sm = 1/2^20,
   n_iterations_sm = 1000,
   startList_dsm = list(finalAsymptoteIntensityRatio = 0, maximum = 1, slope1Param = 1,
-    midPoint1Param = 0.33, slope2Param = 1, midPointDistanceParam = 0.29),
+    midPoint1Param = 0.33, slope2Param = 1, midPointDistanceParam = 0.29, h0 = 0),
   lowerBounds_dsm = c(finalAsymptoteIntensityRatio = 0, maximum = 0.3, slope1Param =
-    0.01, midPoint1Param = -0.52, slope2Param = 0.01, midPointDistanceParam = 0.04),
-  upperBounds_dsm = c(finalAsymptoteIntensityRatio = 1, maximum = 1.5, slope1Param =
-    180, midPoint1Param = 1.15, slope2Param = 180, midPointDistanceParam = 0.63),
+    0.01, midPoint1Param = -0.52, slope2Param = 0.01, midPointDistanceParam = 0.04, h0 =
+    0),
+  upperBounds_dsm = c(finalAsymptoteIntensityRatio = 1, maximum = 1.5, slope1Param = 180,
+    midPoint1Param = 1.15, slope2Param = 180, midPointDistanceParam = 0.63, h0 = 0),
   min_Factor_dsm = 1/2^20,
   n_iterations_dsm = 1000,
   threshold_intensity_range = 0.1,
@@ -33,6 +34,7 @@ fitAndCategorize(
   threshold_AIC = -10,
   threshold_t0_max_int = 0.05,
   stepSize = 1e-05,
+  use_h0 = FALSE,
   ...
 )
 }
@@ -87,6 +89,8 @@ fitAndCategorize(
 
 \item{stepSize}{Step size used by the fitting algorithm. Smaller numbers gave more accurate results than larger numbers, and larger numbers gave the results faster than small numbers. The default value is 0.00001.}
 
+\item{use_h0}{Boolean which decides whether to fix h0 at 0 (FALSE, default) or freely estimate h0 (TRUE)}
+
 \item{...}{All other arguments that model functions ("sigmoidalFitFunction" and, "doublesigmoidalFitFunction") may need.}
 }
 \value{
@@ -96,7 +100,7 @@ Returns the parameters related with the curve fitted to the input data.
 Fits the sigmoidal and double-sigmoidal models to the data and then categorizes the data according to which model fits best.
 }
 \examples{
-# Example 1
+# Example 1 (For h0 fixed at zero)
 time <- seq(3, 24, 0.5)
 
 #simulate intensity data and add noise

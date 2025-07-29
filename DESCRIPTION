@@ -1,8 +1,33 @@
 Package: sicegar
 Type: Package
 Title: Analysis of Single-Cell Viral Growth Curves
-Version: 0.2.4
+Version: 0.3.0
 Authors@R: c( 
+    person(
+      given = "Johanna",
+      family = "Hardin",
+      role = c("aut", "cre"),
+      email = "jo.hardin@pomona.edu",
+      comment = c(ORCID = "0000-0001-6251-1955")
+    ),
+    person(
+      given = "Samuel",
+      family = "Butler",
+      role = c("aut"),
+      email = ""
+    ),
+    person(
+      given = "Phineus",
+      family = "Choi",
+      role = c("aut"),
+      email = ""
+    ),
+    person(
+      given = "Thomas",
+      family = "Matheis",
+      role = c("aut"),
+      email = ""
+    ),
     person(
       given = "M. Umut",
       family = "Caglar",
@@ -12,11 +37,11 @@ Authors@R: c(
     person(
       given = "Claus O.",
       family = "Wilke",
-      role = c("aut", "cre"),
+      role = c("aut"),
       email = "wilke@austin.utexas.edu",
       comment = c(ORCID = "0000-0002-7470-9261")
     )
-  )   
+  )
 Description:
     Aims to quantify time intensity data by using sigmoidal and
     double sigmoidal curves. It fits straight lines, sigmoidal, 
@@ -44,15 +69,21 @@ VignetteBuilder: knitr
 BugReports: https://github.com/wilkelab/sicegar/issues
 Collate:
     'categorize.R'
+    'categorize_h0.R'
     'mainFunctions.R'
     'multipleFitFunction.R'
+    'multipleFitFunction_h0.R'
     'sigmoidalFitFunctions.R'
+    'sigmoidalFitFunctions_h0.R'
     'doublesigmoidalFitFunctions.R'
+    'doublesigmoidalFitFunctions_h0.R'
     'normalizationFunction.R'
+    'normalizationFunction_h0.R'
     'sicegar.R'
     'dataInputCheck.R'
     'parameterCalculation.R'
+    'parameterCalculation_h0.R'
     'figureGeneration.R'
-RoxygenNote: 7.1.1
+Roxygen: list(collate = TRUE)
+RoxygenNote: 7.3.2
 Encoding: UTF-8
-
