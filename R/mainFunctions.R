@@ -1,6 +1,5 @@
 #' @title Fit and categorize.
 #'
-#' @param use_h0 Boolean which decides whether to peg h0 at 0 or freely estimate h0
 #' @param dataInput Un_normalized input data that will be fitted transferred into related functions
 #' @param n_runs_max_sm This number indicates the upper limit of the fitting attempts for sigmoidal model. Default is 500
 #' @param n_runs_min_sm This number indicates the lower limit of the successful fitting attempts for sigmoidal model. It should be smaller than the upper limit of the fitting attempts (n_runs_max_sm). Default is 20
@@ -26,6 +25,7 @@
 #' @param stepSize Step size used by the fitting algorithm. Smaller numbers gave more accurate results than larger numbers, and larger numbers gave the results faster than small numbers. The default value is 0.00001.
 #' @param showDetails Logical if TRUE prints details of intermediate steps of individual fits (Default is FALSE).
 #' @param dataInputName Name of data set (Default is 'NA').
+#' @param use_h0 Boolean which decides whether to fix h0 at 0 (FALSE, default) or freely estimate h0 (TRUE)
 #' @param ... All other arguments that model functions ("sigmoidalFitFunction" and, "doublesigmoidalFitFunction") may need.
 #'
 #' @description Fits the sigmoidal and double-sigmoidal models to the data and then categorizes the data according to which model fits best.
@@ -33,7 +33,7 @@
 #' @export
 #'
 #' @examples
-#' # Example 1 (For pegged h0)
+#' # Example 1 (For h0 fixed at zero)
 #'time <- seq(3, 24, 0.5)
 #'
 #'#simulate intensity data and add noise
@@ -54,7 +54,6 @@
 #'
 fitAndCategorize <-
   function(dataInput,
-           use_h0 = FALSE,
            dataInputName = NA,
            n_runs_min_sm = 20,
            n_runs_max_sm = 500,
@@ -96,8 +95,11 @@ fitAndCategorize <-
            threshold_dsm_tmax_IntensityRatio = 0.75,
            threshold_AIC = -10,
            threshold_t0_max_int = 0.05,
-           stepSize = 0.00001, ...)
-    if(use_h0 == FALSE){
+           stepSize = 0.00001,
+           use_h0 = FALSE,
+           ...)
+{
+    if(!use_h0){
 
     normalizedInput = sicegar::normalizeData(dataInput = dataInput, dataInputName = dataInputName)
     preDecisionProcess = sicegar::preCategorize(normalizedInput = normalizedInput,
@@ -343,3 +345,4 @@ fitAndCategorize <-
                     summaryVector = summaryVector))
       }
     }
+  }
