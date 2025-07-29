@@ -50,12 +50,12 @@
 #'
 #'dataInput <- data.frame(intensity = intensity, time = time)
 #'
-#'fitObj <- sicegar::fitAndCategorize(dataInput = dataInput)
+#'fitObj1 <- sicegar::fitAndCategorize(dataInput = dataInput)
 #'
 #'# Example 2 (For free h0)
 #'# using the same data as above `dataInput`
 #'
-#'fitObj <- sicegar::fitAndCategorize(dataInput = dataInput, use_h0 = TRUE)
+#'fitObj2 <- sicegar::fitAndCategorize(dataInput = dataInput, use_h0 = TRUE)
 #'
 fitAndCategorize <-
   function(dataInput,
