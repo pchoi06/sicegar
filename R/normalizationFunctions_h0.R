@@ -21,7 +21,7 @@
 #' @export
 normalizeData_h0 <- function (dataInput, dataInputName = NA)
 {
-  dataInputCheckVariable <- dataCheck_h0(dataInput)
+  dataInputCheckVariable <- dataCheck(dataInput)
   timeData <- dataInput$time
   timeRange <- max(timeData, na.rm = T)
   timeData <- timeData/timeRange
@@ -53,7 +53,7 @@ normalizeData_h0 <- function (dataInput, dataInputName = NA)
 #' @export
 unnormalizeData_h0 <- function (dataInput)
 {
-  dataInputCheckVariable <- dataCheck_h0(dataInput)
+  dataInputCheckVariable <- dataCheck(dataInput)
   time <- dataInput$dataScalingParameters[["timeRange"]] *
     dataInput$timeIntensityData[["time"]]
   intensity <- dataInput$dataScalingParameters[["intensityMin"]] +
