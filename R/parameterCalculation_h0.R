@@ -1,7 +1,7 @@
 # parameterCalculation_h0 Double Sigmoidal Helper Functions
 #' @title Log‐transformed Double‐Sigmoidal Core Function
 #' @description Computes the log of the core double‐sigmoidal form used for
-#'   optimizing the peak time.  This function is internal to the SPT parameter
+#'   optimizing the peak time.  This function is internal to the fitAndCategorize parameter
 #'   calculation.
 #' @param x Numeric vector of time points.
 #' @param B1 Numeric; slope of the rising phase.
