@@ -33,7 +33,7 @@ figureModelCurves(
 
 \item{fittedXmax}{the maximum of the fitted data that will be plotted (Default timeRange)}
 
-\item{use_h0}{Boolean which decides whether to fix h0 at 0 (FALSE, default) or freely estimate h0 (TRUE)}
+\item{use_h0}{Boolean which decides whether to fix h0 at 0 (FALSE, default) or to freely estimate h0 (TRUE)}
 }
 \value{
 Returns infection curve figures.
@@ -42,7 +42,7 @@ Returns infection curve figures.
 Generates figures using ggplot that shows the input data and the fitted curves.
 }
 \examples{
-Example w/ h0 fixed at zero
+# Example w/ h0 fixed at zero
 time <- seq(3, 24, 0.1)
 
 #simulate intensity data and add noise
@@ -61,7 +61,7 @@ dataInput <- data.frame(intensity = intensity, time = time)
 normalizedInput <- sicegar::normalizeData(dataInput, dataInputName = "sample001")
 
 
-# Do the double sigmoidal fit
+# Double sigmoidal fit
 doubleSigmoidalModel <- sicegar::multipleFitFunction(dataInput = normalizedInput,
                                                     model = "doublesigmoidal",
                                                     n_runs_min = 20,
@@ -74,6 +74,27 @@ fig01 <- sicegar::figureModelCurves(dataInput = normalizedInput,
                                   doubleSigmoidalFitVector = doubleSigmoidalModel,
                                   showParameterRelatedLines = TRUE)
 print(fig01)
+
+
+# Example w/ h0 free
+# using the same data as above `dataInput`
+
+normalizedInput <- sicegar::normalizeData_h0(dataInput, dataInputName = "sample001")
+
+
+# Double sigmoidal fit
+doubleSigmoidalModel <- sicegar::multipleFitFunction_h0(dataInput = normalizedInput,
+                                                    model = "doublesigmoidal",
+                                                    n_runs_min = 20,
+                                                    n_runs_max = 500,
+                                                    showDetails = FALSE)
+
+doubleSigmoidalModel <- sicegar::parameterCalculation_h0(doubleSigmoidalModel)
+
+fig02 <- sicegar::figureModelCurves(dataInput = normalizedInput,
+                                  doubleSigmoidalFitVector = doubleSigmoidalModel,
+                                  showParameterRelatedLines = TRUE, use_h0 = TRUE)
+print(fig02)
 
 
 }

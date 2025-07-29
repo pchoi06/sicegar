@@ -89,7 +89,7 @@ fitAndCategorize(
 
 \item{stepSize}{Step size used by the fitting algorithm. Smaller numbers gave more accurate results than larger numbers, and larger numbers gave the results faster than small numbers. The default value is 0.00001.}
 
-\item{use_h0}{Boolean which decides whether to fix h0 at 0 (FALSE, default) or freely estimate h0 (TRUE)}
+\item{use_h0}{Boolean which decides whether to fix h0 at 0 (FALSE, default) or to freely estimate h0 (TRUE)}
 
 \item{...}{All other arguments that model functions ("sigmoidalFitFunction" and, "doublesigmoidalFitFunction") may need.}
 }
@@ -118,5 +118,10 @@ intensity <- intensity + intensity_noise
 dataInput <- data.frame(intensity = intensity, time = time)
 
 fitObj <- sicegar::fitAndCategorize(dataInput = dataInput)
+
+# Example 2 (For free h0)
+# using the same data as above `dataInput`
+
+fitObj <- sicegar::fitAndCategorize(dataInput = dataInput, use_h0 = TRUE)
 
 }
