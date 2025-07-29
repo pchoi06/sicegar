@@ -26,7 +26,7 @@ Authors@R: c(
       given = "Thomas",
       family = "Matheis",
       role = c("aut"),
-      email = ""
+      email = "tomp2024@mymail.pomona.edu"
     ),
     person(
       given = "M. Umut",
