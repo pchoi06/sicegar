@@ -15,6 +15,7 @@
 #' @export
 #'
 #' @examples
+#' Example w/ h0 pegged
 #'time <- seq(3, 24, 0.1)
 #'
 #'#simulate intensity data and add noise
