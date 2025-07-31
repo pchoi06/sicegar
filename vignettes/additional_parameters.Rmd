@@ -13,7 +13,7 @@ vignette: >
 knitr::opts_chunk$set(echo = TRUE)
 ```
   
-After we have successfully fitted either a sigmoidal or double-sigmoidal model to input data, we may want to extract additional information of interest about the fitted curves, such as the midpoint of the curve and the slope at the midpoint. This information can be calculated with the function `parameterCalculation()`. It is called automatically by the top-level interface `fitAndCategorize()`, but it needs to be called manually if we fit curves with `multipleFitFunction()`.
+After we have successfully fitted either a sigmoidal or double-sigmoidal model to input data, we may want to extract additional information of interest about the fitted curves, such as the midpoint of the curve and the slope at the midpoint. This information can be calculated with the function `parameterCalculation()`. It is called automatically by the top-level interface `fitAndCategorize()`, but it needs to be called manually if we fit curves with `multipleFitFunction()`, assuming the model begins at zero.
   
 
 ```{r install packages, echo=FALSE, warning=FALSE, results='hide', message=FALSE}
