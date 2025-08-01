@@ -25,7 +25,7 @@
 #' @param stepSize Step size used by the fitting algorithm. Smaller numbers gave more accurate results than larger numbers, and larger numbers gave the results faster than small numbers. The default value is 0.00001.
 #' @param showDetails Logical if TRUE prints details of intermediate steps of individual fits (Default is FALSE).
 #' @param dataInputName Name of data set (Default is 'NA').
-#' @param use_h0 Boolean which decides whether to fix h0 at 0 (FALSE, default) or to freely estimate h0 (TRUE)
+#' @param use_h0 Boolean which decides whether to fix the lower asymptote of h0 at 0 (FALSE, default) or to freely estimate h0 (TRUE)
 #' @param ... All other arguments that model functions ("sigmoidalFitFunction" and, "doublesigmoidalFitFunction") may need.
 #'
 #' @description Fits the sigmoidal and double-sigmoidal models to the data and then categorizes the data according to which model fits best.
@@ -34,7 +34,7 @@
 #'
 #' @examples
 #' # Example 1 (For h0 fixed at zero)
-#'time <- seq(3, 24, 0.5)
+#'time <- seq(1, 24, 0.5)
 #'
 #'#simulate intensity data and add noise
 #'noise_parameter <- 0.2

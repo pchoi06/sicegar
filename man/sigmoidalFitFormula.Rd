@@ -23,7 +23,7 @@ Calculates intesities for given time points (x) by using sigmoidal fit model and
 }
 \examples{
 
-time <- seq(3, 24, 0.5)
+time <- seq(1, 24, 0.5)
 
 #simulate intensity data and add noise
 noise_parameter <- 0.1

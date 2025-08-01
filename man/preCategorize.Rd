@@ -26,7 +26,7 @@ Checks if the signal is present in the data. Often a high percentage of high thr
 \examples{
 # Example 1 with double sigmoidal data
 
-time=seq(3, 24, 0.1)
+time=seq(1, 24, 0.1)
 
 #simulate intensity data and add noise
 noise_parameter = 0.2
@@ -48,7 +48,7 @@ isThis_nosignal <- sicegar::preCategorize(normalizedInput = normalizedInput)
 
 # Example 2 with no_signal data
 
-time <- seq(3, 24, 0.1)
+time <- seq(1, 24, 0.1)
 
 #simulate intensity data and add noise
 noise_parameter <- 0.05

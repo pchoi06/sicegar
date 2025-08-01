@@ -2,7 +2,7 @@ context('fit_and_categorize')
 
 test_that('fit_and_categorize with double-sigmoidal input', {
   set.seed(5783)
-  time <- seq(3, 24, 0.5)
+  time <- seq(1, 24, 0.5)
   noise_parameter <- 0.2
   intensity_noise <- runif(n = length(time), min = 0, max = 1) * noise_parameter
   intensity <- doublesigmoidalFitFormula(time,

@@ -11,7 +11,7 @@
 #' # Example 1
 #'
 #' # generate data frame
-#' time <- seq(3, 48, 0.5)
+#' time <- seq(1, 48, 0.5)
 #' intensity <- runif(length(time), 3.0, 7.5)
 #' dataInput <- data.frame(time, intensity)
 #'
@@ -21,7 +21,7 @@
 #' # Example 2
 #'
 #' # generate data frame
-#' time <- seq(3, 48, 0.5)
+#' time <- seq(1, 48, 0.5)
 #' intensity <- runif(length(time), 3.0, 7.5)
 #' dataInput <- data.frame(time, intensity)
 #'

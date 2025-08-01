@@ -39,7 +39,7 @@ Returns the fitted parameters and goodness of fit metrics.
 The function fits a double sigmoidal curve to given data by using likelihood maximization (LM) algorithm and provides the parameters (maximum, final asymptote intensity, slope1Param, midpoint1Param, slope2Param, and midpoint distance) describing the double-sigmoidal fit as output. It also contains information about the goodness of fits such as AIC, BIC, residual sum of squares, and log likelihood.
 }
 \examples{
-time=seq(3, 24, 0.1)
+time=seq(1, 24, 0.1)
 
 #simulate intensity data and add noise
 noise_parameter <- 0.2

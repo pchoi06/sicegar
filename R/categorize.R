@@ -18,7 +18,7 @@
 #'
 #' @examples
 #'# Example 1 with double sigmoidal data
-#'time=seq(3, 24, 0.1)
+#'time=seq(1, 24, 0.1)
 #'
 #'#simulate intensity data and add noise
 #'noise_parameter <- 0.2
@@ -368,7 +368,7 @@ categorize <-
 #' @examples
 #'# Example 1 with double sigmoidal data
 #'
-#'time=seq(3, 24, 0.1)
+#'time=seq(1, 24, 0.1)
 #'
 #'#simulate intensity data and add noise
 #'noise_parameter = 0.2
@@ -390,7 +390,7 @@ categorize <-
 #'
 #'# Example 2 with no_signal data
 #'
-#'time <- seq(3, 24, 0.1)
+#'time <- seq(1, 24, 0.1)
 #'
 #'#simulate intensity data and add noise
 #'noise_parameter <- 0.05

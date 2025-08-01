@@ -13,7 +13,11 @@ vignette: >
 knitr::opts_chunk$set(echo = TRUE)
 ```
   
-After we have successfully fitted either a sigmoidal or double-sigmoidal model to input data, we may want to extract additional information of interest about the fitted curves, such as the midpoint of the curve and the slope at the midpoint. This information can be calculated with the function `parameterCalculation()`. It is called automatically by the top-level interface `fitAndCategorize()`, but it needs to be called manually if we fit curves with `multipleFitFunction()`, assuming the model begins at zero.
+After successfully fitting either a sigmoidal or double-sigmoidal model to input data, we may want to extract additional information of interest about the fitted curves, such as the midpoint of the curve and the slope at the midpoint. 
+This information can be calculated with the function `parameterCalculation()`.
+It is called automatically by the top-level interface `fitAndCategorize()`, but it needs to be called manually if we fit curves with `multipleFitFunction()`.
+The default functions assume that the lower asymptote (when x is at negative infinity) is zero.
+If the data are better fit using a model that estimates the lower asymptote, `parameterCalculation_h0()` and `multipleFitFunction_h0()` functions can be used.
   
 
 ```{r install packages, echo=FALSE, warning=FALSE, results='hide', message=FALSE}
@@ -36,7 +40,7 @@ require("ggplot2")
 
 
 ```{r generate data for sigmoidal, echo=FALSE, warning=FALSE, results='hide', message=FALSE}
-time=seq(3,24,0.5)
+time=seq(1,24,0.5)
 
 #simulate intensity data and add noise
 noise_parameter=0.1

@@ -46,7 +46,7 @@ Catagorizes the input data using the results of two model fitsand chosen thresho
 }
 \examples{
 # Example 1 with double sigmoidal data
-time=seq(3, 24, 0.1)
+time=seq(1, 24, 0.1)
 
 #simulate intensity data and add noise
 noise_parameter <- 0.2

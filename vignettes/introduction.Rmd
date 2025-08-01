@@ -13,13 +13,19 @@ vignette: >
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
-The overarching aim of this package is to fit both a sigmoidal and a double-sigmoidal curve to time--intensity data and then determine which of the two models fit the data best. The sigmoidal model is assumed to start at zero and rise to an asymptotic value. The double-sigmoidal model first increases from 0 to a maximum intensity and the decreases to a final asymptotic intensity. After calculating the best candidate curves for both of models a decision algorithm determines which of the two candidates (if any) fits the data best. Finally, the package calculates key parameters that quantify the time--intensity data with respect to the best-fitting model. 
+The overarching aim of this package is to fit both a sigmoidal and a double-sigmoidal curve to time--intensity data and then to determine which of the two models fit the data best.
+The sigmoidal model default is assumed to start at zero and rise to an asymptotic value.
+The double-sigmoidal model first increases from 0 (default) to a maximum intensity and the decreases to a final asymptotic intensity.
+For both the sigmoid and double-sigmoid models, we provide an option to let the lower asymptote ($h_0$) freely vary.
+After calculating the best candidate curves for both of models a decision algorithm determines which of the two candidate models (if either) fits the data best.
+Finally, the package estimates key parameters that quantify the time--intensity data with respect to the best-fitting model. 
 
 For the sigmoidal model, key parameters describing the curve are: 
 
 * maximum: The maximum asymptotic intensity.
 * midpoint: The time point at which the sigmoidal curve reaches half of its maximum intensity.
 * slope: The slope of the curve at the midpoint.
+* (optional, not default) lower asymptote: The lower asymptote for the intensity when time is at negative infinity
 
 For the double-sigmoidal model, key parameters describing the curve are:
 
@@ -29,6 +35,7 @@ For the double-sigmoidal model, key parameters describing the curve are:
 * slope 1: The slope at midpoint 1.
 * midpoint 2: The time point at which the double-sigmoidal curve reaches the intensity corresponding to the mean of the maximum intensity and the final asymptotic intensity.
 * slope 2: The slope at midpoint 2.
+* (optional, not default) lower asymptote: The lower asymptote for the intensity when time is at negative infinity.
 
 Importantly, the parameters used to mathematically describe the fitted curves do not necessarily directly correspond to these intuitively meaningful parameters. Therefore, the **sicegar** package calculates the intuitively meaningful parameters from the estimated parameters. See the vignette on additional parameters for details.
 
@@ -51,10 +58,12 @@ require("cowplot")
 ```
 
 
-The input to the fitting function must be in the form of a data frame with two columns called `time` and `intensity`. We will here use double-sigmoidal data generated with some arbitrarily chosen parameters. We can use the function `doublesigmoidalFitFormula()` to generate a double-sigmoidal curve, to which we add random noise. 
+The input to the fitting function must be in the form of a data frame with two columns called `time` and `intensity`. 
+Here we use double-sigmoidal data generated with arbitrarily chosen parameters.
+We can use the function `doublesigmoidalFitFormula()` to generate a double-sigmoidal curve, to which we add random noise. 
 
 ```{r fig.height=4, fig.width=4}
-time <- seq(3, 24, 0.5)
+time <- seq(1, 24, 0.5)
 noise_parameter <- 0.2
 intensity_noise <- runif(n = length(time), min = 0, max = 1) * noise_parameter
 intensity <- doublesigmoidalFitFormula(time,
@@ -70,7 +79,10 @@ dataInput <- data.frame(time, intensity)
 ggplot(dataInput, aes(time, intensity)) + geom_point() + theme_bw()
 ```
 
-We can now fit the two models to the data and determine which is the better fit. This is done with the function `fitAndCategorize()`. The three provided threshold parameters are used in the categorization process and depend on the units in which the data are measured. See the vignette on categorizing fits for details.
+We can now fit the two models to the data and determine which is the better fit.
+This is done with the function `fitAndCategorize()`.
+The three provided threshold parameters are used in the categorization process and depend on the units in which the data are measured.
+See the vignette on categorizing fits for details.
 
 ```{r}
 fitObj <- fitAndCategorize(dataInput,
@@ -93,14 +105,17 @@ fig_b <- figureModelCurves(dataInput = fitObj$normalizedInput,
 plot_grid(fig_a, fig_b, ncol = 2) # function from the cowplot package
 ```
 
-Clearly the regular sigmoidal curve does not provide a good fit but the double-sigmoidal curve does. This information is available from the returned fit object:
+Clearly the regular sigmoidal curve does not provide a good fit but the double-sigmoidal curve does. 
+This information is available from the returned fit object:
+
 ```{r}
 fitObj$decisionProcess$decision # final decision
 ```
 
 ## The fit object
 
-The fit object returned by `fitAndCategorize()` contains all the information potentially of interest in the course of this type of an analysis. It consists of five distinct components:
+The fit object returned by `fitAndCategorize()` contains all the information potentially of interest in the course of this type of an analysis.
+It consists of five distinct components:
 
 ```{r}
 names(fitObj)
@@ -114,8 +129,9 @@ Each component holds numerous parameters of interest:
 * `.$decisionProcess`: The results from the decision process of which of the two models fit the data better. For more information, see the vignette on categorizing fits.
 * `.$summaryVector`: Key parameters of the winning model. These are the most important parameters extracted from either `.$sigmoidalModel` or `.$doubleSigmoidalModel`.
 
-Here, the contents of the summary vector is as follows:
+The contents of the summary vector are as follows:
 ```{r The results of the double_sigmoidal fit}
 str(fitObj$summaryVector)
 ```
-All these parameters are defined in the vignette on additional parameters.
+
+All the parameters are defined in the vignette on additional parameters.

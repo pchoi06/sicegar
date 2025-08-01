@@ -126,7 +126,7 @@ renormalizeParameters_h0 <- function(parameterDF, isalist) {
 #' @param midPoint1Param            First midpoint (>0).
 #' @param slope2Param               Second slope (>0).
 #' @param midPointDistanceParam     Distance to second midpoint (>0).
-#' @param h0                        Baseline at x = 0.
+#' @param h0                        Baseline when x is negative infinity.
 #' @return Numeric vector of same length as `x`.
 #' @export
 doubleSigmoidalFitFormula_h0 <- function (x, finalAsymptoteIntensityRatio, maximum, slope1Param,

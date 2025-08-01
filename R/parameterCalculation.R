@@ -8,7 +8,7 @@
 #' @export
 #'
 #' @examples
-#'time <- seq(3, 24, 0.1)
+#'time <- seq(1, 24, 0.1)
 #'
 #'#simulate intensity data with noise
 #'noise_parameter <- 0.2

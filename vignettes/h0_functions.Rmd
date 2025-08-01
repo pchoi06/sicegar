@@ -1,6 +1,6 @@
 ---
-title: "Utilizing _h0 functions of Sicegar"
-author: "Tommy Matheis, Phineus Choi, Sam Butler"
+title: "Allowing the lower asymptote parameter to vary freely"
+author: "Tommy Matheis, Phineus Choi, Sam Butler, Jo Hardin"
 date: "`r Sys.Date()`"
 output: rmarkdown::html_vignette
 vignette: >
@@ -13,7 +13,12 @@ vignette: >
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
-There may be situations where we want to estimate $h_0$ freely in our model rather than assuming it always starts at zero, which is what **sicegar** assumes by default. For this purpose, the functions `fitAndCategorize()` and `figureModelCurves()` contain the argument `use_h0`. Setting this argument to `TRUE` results in the same process as usual, but utilizing functions ending in `_h0` instead of their default counterparts. For example, the functions `multipleFitFunction()`, `doublesigmoidalFitFormula()`, `parameterCalculation()`, and `normalizeData()` have their `_h0` counterparts, written as `multipleFitFunction_h0()`, `doublesigmoidalFitFormula_h0()`, `parameterCalculation_h0()`, and `normalizeData_h0()`.
+## Introduction
+
+There may be situations where we want to estimate the lower asymptote of $h_0$ freely in our model rather than assuming it always starts at zero, which is what **sicegar** assumes by default. 
+For this purpose, the functions `fitAndCategorize()` and `figureModelCurves()` contain the argument `use_h0` (which has a default value set to `FALSE`). 
+Setting the argument to `TRUE` results in the same process as usual, but utilizing functions ending in `_h0` instead of their default counterparts.
+For example, the functions `multipleFitFunction()`, `doublesigmoidalFitFormula()`, `parameterCalculation()`, and `normalizeData()` have `_h0` counterparts, `multipleFitFunction_h0()`, `doublesigmoidalFitFormula_h0()`, `parameterCalculation_h0()`, and `normalizeData_h0()`.
 
 ```{r install packages, echo=FALSE, warning=FALSE, results='hide',message=FALSE}
 
@@ -31,10 +36,10 @@ require("cowplot")
 ###*****************************
 ```
 
-We will demonstrate the differences between letting $h_0$ be estimated freely and assuming it starts at zero, first generating data where $h_0$ is not zero:
+We will demonstrate the differences between letting $h_0$ be estimated freely and assuming it is fixed at zero, first generating data where $h_0$ is not zero:
 
 ```{r generate both datasets for double - sigmoidal}
-time <- seq(3, 24, 0.5)
+time <- seq(1, 24, 0.5)
 noise_parameter <- 0.2
 intensity_noise <- runif(n = length(time), min = 0, max = 1) * noise_parameter
 intensity <- doubleSigmoidalFitFormula_h0(time,
@@ -53,7 +58,9 @@ ggplot(dataInput, aes(time, intensity)) +
   theme_bw()
 ```
 
-We now use to `fitAndCategorize()` on our data, once with default arguments and again setting the argument `use_h0` to `TRUE`:
+## Fitting the models to the data
+
+`fitAndCategorize()` can be applied to the data, first with default arguments and second by setting the argument `use_h0` to `TRUE`:
 
 ```{r}
 fitObj_zero <- fitAndCategorize(dataInput,
@@ -86,11 +93,11 @@ fig_b <- figureModelCurves(dataInput = fitObj_free$normalizedInput,
 plot_grid(fig_a, fig_b, ncol = 2) # function from the cowplot package
 ```
 
-It becomes clear that in this situation, using the default arguments would result in a worse fit than when $h_0$ is allowed to be estimated freely.
+It is clear that in this situation, using the default arguments result in a worse fit than when $h_0$ is allowed to be estimated freely.
 
-## Fitting individual models
+## Model fitting components ($h_0$ free)
 
-To fit and plot individual models using a freely estimated $h_0$, we must directly call the `_h0` counterparts of each **sicegar** function. We have already generated the data, so now we can normalize the data.
+To fit and plot individual models using a freely estimated $h_0$, we must directly call the `_h0` counterparts of each **sicegar** function. We have already generated the data (with $h_0 = 2$), so now we can normalize the data.
 
 ```{r normalize_data}
 normalizedInput <- normalizeData_h0(dataInput = dataInput, 
@@ -101,7 +108,7 @@ head(normalizedInput$timeIntensityData) # the normalized time and intensity data
 We can now call `multipleFitFunction_h0()` on our data to be fitted, calculating additional parameters using `parameterCalculation_h0()`:
 
 ```{r}
-# Do the double-sigmoidal fit
+# Fit the double-sigmoidal model
 doubleSigmoidalModel <- multipleFitFunction_h0(dataInput=normalizedInput,
                                             model="doublesigmoidal")
 
@@ -117,3 +124,26 @@ figureModelCurves(dataInput = normalizedInput,
                   showParameterRelatedLines = TRUE,
                   use_h0 = TRUE)
 ```
+
+## Model parameters
+
+Recall that the original model parameters (which generated the data) were given as `maximum = 10, slope1Param = 1, midPoint1Param = 7, slope2Param = 1, midPointDistanceParam = 8, h0 = 2`.
+
+We can recover the parameter estimates from both of the `doubleSigmoidalModel` objects created above.
+`fitObj_zero` does not return a value for $h_0$ (because it is not part of the estimation process).
+The rest of the parameter values are nearly identical, but models with $h_0 = 0$ are fundamentally different from models with $h_0 \ne 0$.
+
+```{r}
+fitObj_zero$doubleSigmoidalModel |>
+  select(maximum_Estimate, slope1Param_Estimate, midPoint1Param_Estimate,
+         slope2Param_Estimate, midPointDistanceParam_Estimate) |> 
+  c()
+
+
+fitObj_free$doubleSigmoidalModel |>
+  select(maximum_Estimate, slope1Param_Estimate, midPoint1Param_Estimate,
+         slope2Param_Estimate, midPointDistanceParam_Estimate, h0_Estimate) |> c()
+
+
+```
+

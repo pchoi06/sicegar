@@ -37,7 +37,7 @@ Calls the fitting algorithms to fit the data multiple times with starting from d
 }
 \examples{
 # Example 1 (sigmoidal function with normalization)
-time <- seq(3, 24, 0.5)
+time <- seq(1, 24, 0.5)
 
 #simulate intensity data and add noise
 noise_parameter <- 2.5
@@ -77,7 +77,7 @@ if(!parameterVector$isThisaFit){
 }
 
 # Example 2 (doublesigmoidal function with normalization)
-time <- seq(3, 24, 0.1)
+time <- seq(1, 24, 0.1)
 
 #simulate intensity data with noise
 noise_parameter <- 0.2

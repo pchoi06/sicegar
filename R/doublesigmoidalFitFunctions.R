@@ -12,7 +12,7 @@
 #' @return Returns the fitted parameters and goodness of fit metrics.
 #' @export
 #' @examples
-#'time=seq(3, 24, 0.1)
+#'time=seq(1, 24, 0.1)
 #'
 #'#simulate intensity data and add noise
 #'noise_parameter <- 0.2
@@ -201,7 +201,7 @@ doublesigmoidalFitFunction <- function(dataInput,
 #' @return Returns the predicted intensities for the given time points with the double-sigmoidal fitted parameters for the double sigmoidal fit.
 #' @export
 #' @examples
-#'time <- seq(3, 24, 0.1)
+#'time <- seq(1, 24, 0.1)
 #'
 #'#simulate intensity data and add noise
 #'noise_parameter <- 0.2

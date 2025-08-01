@@ -13,7 +13,11 @@ vignette: >
   knitr::opts_chunk$set(echo = TRUE)
 ```
 
-In high-throughput scenarios, we often don't know a priori whether a given dataset represents a sigmoidal curve, a double-sigmoidal curve, or neither. In these cases, we need to fit multiple different models to the data and then determine which model fits the best. This process is normally done automatically by the function `sicegar::fitAndCategorize()`. The default arguments for this function assume the model begins at zero. In this vignette, we describe how this process works and how it can be done manually.
+In high-throughput scenarios, we often don't know a priori whether a given dataset represents a sigmoidal curve, a double-sigmoidal curve, or neither.
+In these cases, we need to fit multiple different models to the data and then determine which model best fits the data.
+This process is normally done automatically by the function `sicegar::fitAndCategorize()`.
+The default function assumes that the lower asymptote (when x is at negative infinity) is zero, but the argument `use_h0 = TRUE` can be used to estimate the lower asymptote.
+In the vignette, we describe how this process works and how the steps can be performed manually.
 
 ```{r install packages, echo=FALSE, warning=FALSE, results='hide', message=FALSE}
 
@@ -36,7 +40,7 @@ require(cowplot)
 We will demonstrate this process for an artificial dataset representing a double-sigmoidal function. We first generate the data:
 
 ```{r generate data for double - sigmoidal}
-time <- seq(3, 24, 0.5)
+time <- seq(1, 24, 0.5)
 noise_parameter <- 0.2
 intensity_noise <- runif(n = length(time), min = 0, max = 1) * noise_parameter
 intensity <- doublesigmoidalFitFormula(time,

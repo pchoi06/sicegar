@@ -18,7 +18,7 @@ Returns the expanded parameter vector. This vector includes useful derived value
 Generates useful values for external use, with the help of parameterVector's of the fits.
 }
 \examples{
-time <- seq(3, 24, 0.1)
+time <- seq(1, 24, 0.1)
 
 #simulate intensity data with noise
 noise_parameter <- 0.2

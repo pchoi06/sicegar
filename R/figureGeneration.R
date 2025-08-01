@@ -16,7 +16,7 @@
 #'
 #' @examples
 #'# Example w/ h0 fixed at zero
-#'time <- seq(3, 24, 0.1)
+#'time <- seq(1, 24, 0.1)
 #'
 #'#simulate intensity data and add noise
 #'noise_parameter <- 0.2

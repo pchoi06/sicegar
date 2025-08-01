@@ -1,0 +1,11 @@
+pandoc: '3.4'
+pkgdown: 2.1.3
+pkgdown_sha: ~
+articles:
+  additional_parameters: additional_parameters.html
+  categorizing_fits: categorizing_fits.html
+  fitting_individual_models: fitting_individual_models.html
+  h0_functions: h0_functions.html
+  introduction: introduction.html
+  plotting_fitted_models: plotting_fitted_models.html
+last_built: 2025-08-01T22:33Z

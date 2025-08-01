@@ -36,7 +36,7 @@ Returns the predicted intensities for the given time points with the double-sigm
 Calculates intensities using the double-sigmoidal model fit and the parameters (maximum, final asymptote intensity, slope1Param, midpoint1Param, slope2Param, and mid point distance).
 }
 \examples{
-time <- seq(3, 24, 0.1)
+time <- seq(1, 24, 0.1)
 
 #simulate intensity data and add noise
 noise_parameter <- 0.2

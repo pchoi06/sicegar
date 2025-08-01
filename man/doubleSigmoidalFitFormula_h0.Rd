@@ -30,7 +30,7 @@ doubleSigmoidalFitFormula_h0(
 
 \item{midPointDistanceParam}{Distance to second midpoint (>0).}
 
-\item{h0}{Baseline at x = 0.}
+\item{h0}{Baseline when x is negative infinity.}
 }
 \value{
 Numeric vector of same length as `x`.
