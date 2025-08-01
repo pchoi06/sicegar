@@ -51,7 +51,7 @@ Description:
     in the context of single-cell viral growth analysis (for
     details, see Caglar et al. (2018) <doi:10.7717/peerj.4251>),
     and the package name stands for "SIngle CEll Growth Analysis in R".
-URL: https://github.com/wilkelab/sicegar
+URL: https://github.com/wilkelab/sicegar, https://hardin47.github.io/sicegar/
 Imports:
     dplyr,
     minpack.lm,
