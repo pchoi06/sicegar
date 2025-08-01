@@ -31,6 +31,8 @@ require("cowplot")
 ###*****************************
 ```
 
+## Plotting the data
+
 To demonstrate figure generation, we first generate simulated sigmoidal and double-sigmoidal data and fit the respective models to these datasets.
 
 ```{r}
@@ -76,6 +78,8 @@ figureModelCurves(dataInput = fitObj_sm$normalizedInput)
 figureModelCurves(dataInput = fitObj_dsm$normalizedInput)
 ```
 
+## Plotting the model onto the data
+
 Second, we can plot the input data with the fitted lines.
 ```{r plot_raw_data_fit, echo=TRUE, message=FALSE, warning=FALSE, comment=FALSE, fig.height=4, fig.width=6}
 # sigmoidal fit
@@ -86,6 +90,8 @@ figureModelCurves(dataInput = fitObj_sm$normalizedInput,
 figureModelCurves(dataInput = fitObj_dsm$normalizedInput,
                   doubleSigmoidalFitVector = fitObj_dsm$doubleSigmoidalModel)
 ```
+
+## Adding the parameter estimates to the model
 
 Third, we can additionally visualize the parameter estimates, by setting `showParameterRelatedLines = TRUE`.
 ```{r plot_param_lines, echo=TRUE, message=FALSE, warning=FALSE, comment=FALSE, fig.height=4, fig.width=6}

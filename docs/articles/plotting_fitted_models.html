@@ -46,7 +46,7 @@
 <li class="nav-item"><form class="form-inline" role="search">
  <input class="form-control" type="search" name="search-input" id="search-input" autocomplete="off" aria-label="Search site" placeholder="Search for" data-search-index="../search.json">
 </form></li>
-<li class="nav-item"><a class="external-link nav-link" href="https://github.com/wilkelab/sicegar/" aria-label="GitHub"><span class="fa fab fa-github fa-lg"></span></a></li>
+<li class="nav-item"><a class="external-link nav-link" href="https://github.com/hardin47/sicegar/" aria-label="GitHub"><span class="fa fab fa-github fa-lg"></span></a></li>
       </ul>
 </div>
 
@@ -66,7 +66,7 @@ Claus O. Wilke</h4>
             
             <h4 data-toc-skip class="date">2025-08-01</h4>
       
-      <small class="dont-index">Source: <a href="https://github.com/wilkelab/sicegar/blob/HEAD/vignettes/plotting_fitted_models.Rmd" class="external-link"><code>vignettes/plotting_fitted_models.Rmd</code></a></small>
+      <small class="dont-index">Source: <a href="https://github.com/hardin47/sicegar/blob/HEAD/vignettes/plotting_fitted_models.Rmd" class="external-link"><code>vignettes/plotting_fitted_models.Rmd</code></a></small>
       <div class="d-none name"><code>plotting_fitted_models.Rmd</code></div>
     </div>
 
@@ -75,6 +75,9 @@ Claus O. Wilke</h4>
 <p>The <strong>sicegar</strong> package provides a helpful function that
 can generate plots of the fitted models. This function is built on top
 of the <strong>ggplot2</strong> plot library.</p>
+<div class="section level2">
+<h2 id="plotting-the-data">Plotting the data<a class="anchor" aria-label="anchor" href="#plotting-the-data"></a>
+</h2>
 <p>To demonstrate figure generation, we first generate simulated
 sigmoidal and double-sigmoidal data and fit the respective models to
 these datasets.</p>
@@ -120,6 +123,10 @@ options.</p>
 <code class="sourceCode R"><span><span class="co"># double-sigmoidal raw data only</span></span>
 <span><span class="fu"><a href="../reference/figureModelCurves.html">figureModelCurves</a></span><span class="op">(</span>dataInput <span class="op">=</span> <span class="va">fitObj_dsm</span><span class="op">$</span><span class="va">normalizedInput</span><span class="op">)</span></span></code></pre></div>
 <p><img src="plotting_fitted_models_files/figure-html/plot_raw_data-2.png" width="576"></p>
+</div>
+<div class="section level2">
+<h2 id="plotting-the-model-onto-the-data">Plotting the model onto the data<a class="anchor" aria-label="anchor" href="#plotting-the-model-onto-the-data"></a>
+</h2>
 <p>Second, we can plot the input data with the fitted lines.</p>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># sigmoidal fit</span></span>
@@ -131,6 +138,10 @@ options.</p>
 <span><span class="fu"><a href="../reference/figureModelCurves.html">figureModelCurves</a></span><span class="op">(</span>dataInput <span class="op">=</span> <span class="va">fitObj_dsm</span><span class="op">$</span><span class="va">normalizedInput</span>,</span>
 <span>                  doubleSigmoidalFitVector <span class="op">=</span> <span class="va">fitObj_dsm</span><span class="op">$</span><span class="va">doubleSigmoidalModel</span><span class="op">)</span></span></code></pre></div>
 <p><img src="plotting_fitted_models_files/figure-html/plot_raw_data_fit-2.png" width="576"></p>
+</div>
+<div class="section level2">
+<h2 id="adding-the-parameter-estimates-to-the-model">Adding the parameter estimates to the model<a class="anchor" aria-label="anchor" href="#adding-the-parameter-estimates-to-the-model"></a>
+</h2>
 <p>Third, we can additionally visualize the parameter estimates, by
 setting <code>showParameterRelatedLines = TRUE</code>.</p>
 <div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
@@ -150,6 +161,7 @@ parameters calculated using <code><a href="../reference/parameterCalculation.htm
 done automatically when fitting with <code>fitFunction()</code>, but
 needs to be done manually when fitting with
 <code><a href="../reference/multipleFitFunction.html">multipleFitFunction()</a></code>.</p>
+</div>
   </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>
     </nav></aside>
 </div>
