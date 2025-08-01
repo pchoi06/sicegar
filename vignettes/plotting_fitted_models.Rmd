@@ -15,7 +15,7 @@ knitr::opts_chunk$set(echo = TRUE)
   
 The **sicegar** package provides a helpful function that can generate plots of the fitted models. This function is built on top of the **ggplot2** plot library.
   
-```{r install packages, echo=FALSE, warning=FALSE, results='hide',message=FALSE}
+```{r install_packages, echo=FALSE, warning=FALSE, results='hide',message=FALSE}
 
 ###*****************************
 # INITIAL COMMANDS TO RESET THE SYSTEM
@@ -68,7 +68,7 @@ The function returns a **ggplot2** plot that can be saved or displayed directly.
 The function has several different options.
 
 First, we can plot only the raw input data.
-```{r plot raw data, echo=TRUE, fig.height=4, fig.width=6}
+```{r plot_raw_data, echo=TRUE, fig.height=4, fig.width=6}
 # sigmoidal raw data only
 figureModelCurves(dataInput = fitObj_sm$normalizedInput)
 
@@ -77,7 +77,7 @@ figureModelCurves(dataInput = fitObj_dsm$normalizedInput)
 ```
 
 Second, we can plot the input data with the fitted lines.
-```{r plot raw data and fit, echo=TRUE, message=FALSE, warning=FALSE, comment=FALSE, fig.height=4, fig.width=6}
+```{r plot_raw_data_fit, echo=TRUE, message=FALSE, warning=FALSE, comment=FALSE, fig.height=4, fig.width=6}
 # sigmoidal fit
 figureModelCurves(dataInput = fitObj_sm$normalizedInput,
                   sigmoidalFitVector = fitObj_sm$sigmoidalModel)
@@ -88,7 +88,7 @@ figureModelCurves(dataInput = fitObj_dsm$normalizedInput,
 ```
 
 Third, we can additionally visualize the parameter estimates, by setting `showParameterRelatedLines = TRUE`.
-```{r plot raw data and fit with parameter related lines, echo=TRUE, message=FALSE, warning=FALSE, comment=FALSE, fig.height=4, fig.width=6}
+```{r plot_param_lines, echo=TRUE, message=FALSE, warning=FALSE, comment=FALSE, fig.height=4, fig.width=6}
 # sigmoidal fit with parameter related lines
 figureModelCurves(dataInput = fitObj_sm$normalizedInput,
                   sigmoidalFitVector = fitObj_sm$sigmoidalModel,

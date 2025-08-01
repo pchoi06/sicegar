@@ -20,7 +20,7 @@ For this purpose, the functions `fitAndCategorize()` and `figureModelCurves()` c
 Setting the argument to `TRUE` results in the same process as usual, but utilizing functions ending in `_h0` instead of their default counterparts.
 For example, the functions `multipleFitFunction()`, `doublesigmoidalFitFormula()`, `parameterCalculation()`, and `normalizeData()` have `_h0` counterparts, `multipleFitFunction_h0()`, `doublesigmoidalFitFormula_h0()`, `parameterCalculation_h0()`, and `normalizeData_h0()`.
 
-```{r install packages, echo=FALSE, warning=FALSE, results='hide',message=FALSE}
+```{r install_packages, echo=FALSE, warning=FALSE, results='hide',message=FALSE}
 
 ###*****************************
 # INITIAL COMMANDS TO RESET THE SYSTEM
@@ -38,7 +38,7 @@ require("cowplot")
 
 We will demonstrate the differences between letting $h_0$ be estimated freely and assuming it is fixed at zero, first generating data where $h_0$ is not zero:
 
-```{r generate both datasets for double - sigmoidal}
+```{r generate_data}
 time <- seq(1, 24, 0.5)
 noise_parameter <- 0.2
 intensity_noise <- runif(n = length(time), min = 0, max = 1) * noise_parameter
@@ -78,7 +78,7 @@ fitObj_free <- fitAndCategorize(dataInput,
 
 Using `figureModelCurves()`, we can visualize the differences between using the default arguments and letting $h_0$ be freely estimated.
 
-```{r fig.height=4, fig.width=8}
+```{r zero_free_plots, fig.height=4, fig.width=8}
 # Double-sigmoidal fit with parameter related lines
 fig_a <- figureModelCurves(dataInput = fitObj_zero$normalizedInput,
                                   doubleSigmoidalFitVector = fitObj_zero$doubleSigmoidalModel,
@@ -117,7 +117,7 @@ doubleSigmoidalModel <- parameterCalculation_h0(doubleSigmoidalModel)
 
 Now that we have obtained a fit, we can use `figureModelCurves()` to plot it:
 
-```{r plot raw data and fit, echo=TRUE, message=FALSE, warning=FALSE, comment=FALSE, fig.height=4, fig.width=6}
+```{r plot_raw_fit, echo=TRUE, message=FALSE, warning=FALSE, comment=FALSE, fig.height=4, fig.width=6}
 # double-sigmoidal fit
 figureModelCurves(dataInput = normalizedInput,
                   doubleSigmoidalFitVector = doubleSigmoidalModel,

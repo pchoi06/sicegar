@@ -115,22 +115,22 @@ options.</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># sigmoidal raw data only</span></span>
 <span><span class="fu"><a href="../reference/figureModelCurves.html">figureModelCurves</a></span><span class="op">(</span>dataInput <span class="op">=</span> <span class="va">fitObj_sm</span><span class="op">$</span><span class="va">normalizedInput</span><span class="op">)</span></span></code></pre></div>
-<p><img src="plotting_fitted_models_files/figure-html/plot%20raw%20data-1.png" width="576"></p>
+<p><img src="plotting_fitted_models_files/figure-html/plot_raw_data-1.png" width="576"></p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># double-sigmoidal raw data only</span></span>
 <span><span class="fu"><a href="../reference/figureModelCurves.html">figureModelCurves</a></span><span class="op">(</span>dataInput <span class="op">=</span> <span class="va">fitObj_dsm</span><span class="op">$</span><span class="va">normalizedInput</span><span class="op">)</span></span></code></pre></div>
-<p><img src="plotting_fitted_models_files/figure-html/plot%20raw%20data-2.png" width="576"></p>
+<p><img src="plotting_fitted_models_files/figure-html/plot_raw_data-2.png" width="576"></p>
 <p>Second, we can plot the input data with the fitted lines.</p>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># sigmoidal fit</span></span>
 <span><span class="fu"><a href="../reference/figureModelCurves.html">figureModelCurves</a></span><span class="op">(</span>dataInput <span class="op">=</span> <span class="va">fitObj_sm</span><span class="op">$</span><span class="va">normalizedInput</span>,</span>
 <span>                  sigmoidalFitVector <span class="op">=</span> <span class="va">fitObj_sm</span><span class="op">$</span><span class="va">sigmoidalModel</span><span class="op">)</span></span></code></pre></div>
-<p><img src="plotting_fitted_models_files/figure-html/plot%20raw%20data%20and%20fit-1.png" width="576"></p>
+<p><img src="plotting_fitted_models_files/figure-html/plot_raw_data_fit-1.png" width="576"></p>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># double-sigmoidal fit</span></span>
 <span><span class="fu"><a href="../reference/figureModelCurves.html">figureModelCurves</a></span><span class="op">(</span>dataInput <span class="op">=</span> <span class="va">fitObj_dsm</span><span class="op">$</span><span class="va">normalizedInput</span>,</span>
 <span>                  doubleSigmoidalFitVector <span class="op">=</span> <span class="va">fitObj_dsm</span><span class="op">$</span><span class="va">doubleSigmoidalModel</span><span class="op">)</span></span></code></pre></div>
-<p><img src="plotting_fitted_models_files/figure-html/plot%20raw%20data%20and%20fit-2.png" width="576"></p>
+<p><img src="plotting_fitted_models_files/figure-html/plot_raw_data_fit-2.png" width="576"></p>
 <p>Third, we can additionally visualize the parameter estimates, by
 setting <code>showParameterRelatedLines = TRUE</code>.</p>
 <div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
@@ -138,13 +138,13 @@ setting <code>showParameterRelatedLines = TRUE</code>.</p>
 <span><span class="fu"><a href="../reference/figureModelCurves.html">figureModelCurves</a></span><span class="op">(</span>dataInput <span class="op">=</span> <span class="va">fitObj_sm</span><span class="op">$</span><span class="va">normalizedInput</span>,</span>
 <span>                  sigmoidalFitVector <span class="op">=</span> <span class="va">fitObj_sm</span><span class="op">$</span><span class="va">sigmoidalModel</span>,</span>
 <span>                  showParameterRelatedLines <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></code></pre></div>
-<p><img src="plotting_fitted_models_files/figure-html/plot%20raw%20data%20and%20fit%20with%20parameter%20related%20lines-1.png" width="576"></p>
+<p><img src="plotting_fitted_models_files/figure-html/plot_param_lines-1.png" width="576"></p>
 <div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># double-sigmoidal fit with parameter related lines</span></span>
 <span><span class="fu"><a href="../reference/figureModelCurves.html">figureModelCurves</a></span><span class="op">(</span>dataInput <span class="op">=</span> <span class="va">fitObj_dsm</span><span class="op">$</span><span class="va">normalizedInput</span>,</span>
 <span>                  doubleSigmoidalFitVector <span class="op">=</span> <span class="va">fitObj_dsm</span><span class="op">$</span><span class="va">doubleSigmoidalModel</span>,</span>
 <span>                  showParameterRelatedLines <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></code></pre></div>
-<p><img src="plotting_fitted_models_files/figure-html/plot%20raw%20data%20and%20fit%20with%20parameter%20related%20lines-2.png" width="576"></p>
+<p><img src="plotting_fitted_models_files/figure-html/plot_param_lines-2.png" width="576"></p>
 <p>Note that the last example only works for models that had additional
 parameters calculated using <code><a href="../reference/parameterCalculation.html">parameterCalculation()</a></code>. This is
 done automatically when fitting with <code>fitFunction()</code>, but

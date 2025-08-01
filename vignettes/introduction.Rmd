@@ -41,7 +41,7 @@ Importantly, the parameters used to mathematically describe the fitted curves do
 
 
 ##  Example fit on simulated input data
-```{r install packages, echo=FALSE, warning=FALSE, results='hide',message=FALSE}
+```{r install_packages, echo=FALSE, warning=FALSE, results='hide',message=FALSE}
 
 ###*****************************
 # INITIAL COMMANDS TO RESET THE SYSTEM
@@ -62,7 +62,7 @@ The input to the fitting function must be in the form of a data frame with two c
 Here we use double-sigmoidal data generated with arbitrarily chosen parameters.
 We can use the function `doublesigmoidalFitFormula()` to generate a double-sigmoidal curve, to which we add random noise. 
 
-```{r fig.height=4, fig.width=4}
+```{r data_plot, fig.height=4, fig.width=4}
 time <- seq(1, 24, 0.5)
 noise_parameter <- 0.2
 intensity_noise <- runif(n = length(time), min = 0, max = 1) * noise_parameter
@@ -92,7 +92,7 @@ fitObj <- fitAndCategorize(dataInput,
 ```
 The two fitted curves can be visualized with the function `figureModelCurves()`, which returns a **ggplot2** plot.
 
-```{r fig.height=4, fig.width=8}
+```{r model_plot, fig.height=4, fig.width=8}
 # Double-sigmoidal fit with parameter related lines
 fig_a <- figureModelCurves(dataInput = fitObj$normalizedInput,
                                   sigmoidalFitVector = fitObj$sigmoidalModel,
@@ -130,7 +130,7 @@ Each component holds numerous parameters of interest:
 * `.$summaryVector`: Key parameters of the winning model. These are the most important parameters extracted from either `.$sigmoidalModel` or `.$doubleSigmoidalModel`.
 
 The contents of the summary vector are as follows:
-```{r The results of the double_sigmoidal fit}
+```{r double_results}
 str(fitObj$summaryVector)
 ```
 

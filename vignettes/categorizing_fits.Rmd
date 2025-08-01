@@ -19,7 +19,7 @@ This process is normally done automatically by the function `sicegar::fitAndCate
 The default function assumes that the lower asymptote (when x is at negative infinity) is zero, but the argument `use_h0 = TRUE` can be used to estimate the lower asymptote.
 In the vignette, we describe how this process works and how the steps can be performed manually.
 
-```{r install packages, echo=FALSE, warning=FALSE, results='hide', message=FALSE}
+```{r install_packages, echo=FALSE, warning=FALSE, results='hide', message=FALSE}
 
 ###*****************************
 # INITIAL COMMANDS TO RESET THE SYSTEM
@@ -39,7 +39,7 @@ require(cowplot)
 
 We will demonstrate this process for an artificial dataset representing a double-sigmoidal function. We first generate the data:
 
-```{r generate data for double - sigmoidal}
+```{r generate_double}
 time <- seq(1, 24, 0.5)
 noise_parameter <- 0.2
 intensity_noise <- runif(n = length(time), min = 0, max = 1) * noise_parameter
@@ -76,7 +76,7 @@ doubleSigmoidalModel <- multipleFitFunction(dataInput = normalizedInput,
 
 We also need to perform the additional parameter calculations, as these are required by the `categorize()` function we use below.
 
-```{r linear sigmoidal amd double-sigmoidal fits to double-sigmoidal data}
+```{r linear_fit}
 # Calculate additional parameters
 sigmoidalModel <- parameterCalculation(sigmoidalModel)
 
@@ -85,7 +85,7 @@ doubleSigmoidalModel <- parameterCalculation(doubleSigmoidalModel)
 ```
 
 This is what the two fits look like:
-```{r echo=FALSE, warning=FALSE, message=FALSE, fig.width=7}
+```{r two_fits, echo=FALSE, warning=FALSE, message=FALSE, fig.width=7}
 f1 <- figureModelCurves(dataInput = normalizedInput,
                         sigmoidalFitVector = sigmoidalModel,
                         showParameterRelatedLines = TRUE)

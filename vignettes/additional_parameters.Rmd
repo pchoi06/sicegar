@@ -20,7 +20,7 @@ The default functions assume that the lower asymptote (when x is at negative inf
 If the data are better fit using a model that estimates the lower asymptote, `parameterCalculation_h0()` and `multipleFitFunction_h0()` functions can be used.
   
 
-```{r install packages, echo=FALSE, warning=FALSE, results='hide', message=FALSE}
+```{r install_packages, echo=FALSE, warning=FALSE, results='hide', message=FALSE}
 
 ###*****************************
 # INITIAL COMMANDS TO RESET THE SYSTEM
@@ -39,7 +39,7 @@ require("ggplot2")
 ```
 
 
-```{r generate data for sigmoidal, echo=FALSE, warning=FALSE, results='hide', message=FALSE}
+```{r generate_sig, echo=FALSE, warning=FALSE, results='hide', message=FALSE}
 time=seq(1,24,0.5)
 
 #simulate intensity data and add noise
@@ -52,7 +52,7 @@ dataInputSigmoidal=data.frame(time, intensity)
 ```
 
 
-```{r generate data for double - sigmoidal, echo=FALSE, warning=FALSE, results='hide', message=FALSE}
+```{r generate_double, echo=FALSE, warning=FALSE, results='hide', message=FALSE}
 noise_parameter=0.2
 intensity_noise=runif(n = length(time),min = 0,max = 1)*noise_parameter
 intensity=sicegar::doublesigmoidalFitFormula(time,
@@ -79,28 +79,28 @@ normalizedDoubleSigmoidalInput = sicegar::normalizeData(dataInput = dataInputDou
 
 Assume we have fitted a sigmoidal or double-sigmoidal model using `sicegar::multipleFitFunction()`:
 
-```{r sigmoidal and double sigmoidal fit to datasets}
+```{r fit_data}
 sigmoidalModel <- multipleFitFunction(dataInput=normalizedSigmoidalInput,
                                    model="sigmoidal")
 ```
 
-```{r echo=FALSE, warning=FALSE, results='hide', message=FALSE}
+```{r double_model, echo=FALSE, warning=FALSE, results='hide', message=FALSE}
 doubleSigmoidalModel <- multipleFitFunction(dataInput=normalizedDoubleSigmoidalInput,
                                          model="doublesigmoidal")
 ```
 
 We can then apply `sicegar::parameterCalculation()` to the generated model objects:
-```{r generate additional parameters for sigmoidalModel and doubleSigmoidalModel}
+```{r additional_parameters}
 sigmoidalModelAugmented <- parameterCalculation(sigmoidalModel)
 ```
 
-```{r echo=FALSE, warning=FALSE, results='hide', message=FALSE}
+```{r double_parameters, echo=FALSE, warning=FALSE, results='hide', message=FALSE}
 doubleSigmoidalModelAugmented <- parameterCalculation(doubleSigmoidalModel)
 ```
 
 Compare the contents of the fitted model before and after parameter calculation:
 
-```{r generate additional parameters for sigmoidalModel}
+```{r generate_sig_params}
 # before parameter calculation 
 t(sigmoidalModel)
 # after parameter calculation 
@@ -142,7 +142,7 @@ The following parameters are calculated by `parameterCalculation()` for the sigm
 
 ## Additional parameters for the double-sigmoidal model
 
-```{r echo=FALSE, warning=FALSE, results='hide', message=FALSE}
+```{r print_double, echo=FALSE, warning=FALSE, results='hide', message=FALSE}
 # Parameters for double sigmoidal model
 print(t(doubleSigmoidalModel))
 ```
