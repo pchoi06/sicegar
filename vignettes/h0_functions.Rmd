@@ -4,7 +4,7 @@ author: "Tommy Matheis, Phineus Choi, Sam Butler, Jo Hardin"
 date: "`r Sys.Date()`"
 output: rmarkdown::html_vignette
 vignette: >
-  %\VignetteIndexEntry{Utilizing _h0 functions of Sicegar}
+  %\VignetteIndexEntry{Allowing the lower asymptote parameter to vary freely}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
 ---

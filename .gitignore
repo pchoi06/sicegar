@@ -63,3 +63,5 @@ vignettes/*.pdf
 
 .Rproj.user
 docs
+/doc/
+/Meta/

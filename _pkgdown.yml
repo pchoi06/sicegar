@@ -8,7 +8,6 @@ description: Aims to quantify time intensity data by using sigmoidal and
     details, see Caglar et al. (2018) <doi:10.7717/peerj.4251>),
     and the package name stands for "SIngle CEll Growth Analysis in R".
 
-source: docs
 url: https://hardin47.github.io/sicegar/
 template:
   bootstrap: 5
