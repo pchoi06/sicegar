@@ -100,34 +100,34 @@ It is clear that in this situation, using the default arguments result in a wors
 To fit and plot individual models using a freely estimated $h_0$, we must directly call the `_h0` counterparts of each **sicegar** function. We have already generated the data (with $h_0 = 2$), so now we can normalize the data.
 
 ```{r normalize_data}
-normalizedInput <- normalizeData_h0(dataInput = dataInput, 
+normalizedInput_free <- normalizeData_h0(dataInput = dataInput, 
                                  dataInputName = "doubleSigmoidalSample")
-head(normalizedInput$timeIntensityData) # the normalized time and intensity data
+head(normalizedInput_free$timeIntensityData) # the normalized time and intensity data
 ```
 
 We can now call `multipleFitFunction_h0()` on our data to be fitted, calculating additional parameters using `parameterCalculation_h0()`:
 
 ```{r}
 # Fit the double-sigmoidal model
-doubleSigmoidalModel <- multipleFitFunction_h0(dataInput=normalizedInput,
+doubleSigmoidalModel_free <- multipleFitFunction_h0(dataInput=normalizedInput_free,
                                             model="doublesigmoidal")
 
-doubleSigmoidalModel <- parameterCalculation_h0(doubleSigmoidalModel)
+doubleSigmoidalModel_free <- parameterCalculation_h0(doubleSigmoidalModel_free)
 ```
 
 Now that we have obtained a fit, we can use `figureModelCurves()` to plot it:
 
 ```{r plot_raw_fit, echo=TRUE, message=FALSE, warning=FALSE, comment=FALSE, fig.height=4, fig.width=6}
 # double-sigmoidal fit
-figureModelCurves(dataInput = normalizedInput,
-                  doubleSigmoidalFitVector = doubleSigmoidalModel,
+figureModelCurves(dataInput = normalizedInput_free,
+                  doubleSigmoidalFitVector = doubleSigmoidalModel_free,
                   showParameterRelatedLines = TRUE,
                   use_h0 = TRUE)
 ```
 
 ## Model parameters
 
-Recall that the original model parameters (which generated the data) were given as `finalAsymptoteIntensityRatio = 0.3, maximum = 10, slope1Param = 1, midPoint1Param = 7, slope2Param = 1, midPointDistanceParam = 8, h0 = 2`.
+Recall that the original model parameters (which generated the data) are given as `finalAsymptoteIntensityRatio = 0.3, maximum = 10, slope1Param = 1, midPoint1Param = 7, slope2Param = 1, midPointDistanceParam = 8, h0 = 2`.
 
 We can recover the parameter estimates from both of the `doubleSigmoidalModel` objects created above.
 `fitObj_zero` does not return a value for $h_0$ (because it is not part of the estimation process).
