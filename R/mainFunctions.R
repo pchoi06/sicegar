@@ -245,10 +245,7 @@ fitAndCategorize <-
                   summaryVector = summaryVector))
 
     }
-    }
-
-
-    else{
+    }else{
       normalizedInput = normalizeData_h0(dataInput = dataInput,
                                          dataInputName = dataInputName)
       preDecisionProcess = preCategorize_h0(normalizedInput = normalizedInput,

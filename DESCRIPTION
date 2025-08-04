@@ -14,13 +14,13 @@ Authors@R: c(
       given = "Samuel",
       family = "Butler",
       role = c("aut"),
-      email = ""
+      email = "swbe2022@mymail.pomona.edu"
     ),
     person(
       given = "Phineus",
       family = "Choi",
       role = c("aut"),
-      email = ""
+      email = "pchm2023@mymail.pomona.edu"
     ),
     person(
       given = "Thomas",

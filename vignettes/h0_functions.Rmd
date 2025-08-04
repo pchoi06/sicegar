@@ -127,7 +127,7 @@ figureModelCurves(dataInput = normalizedInput,
 
 ## Model parameters
 
-Recall that the original model parameters (which generated the data) were given as `maximum = 10, slope1Param = 1, midPoint1Param = 7, slope2Param = 1, midPointDistanceParam = 8, h0 = 2`.
+Recall that the original model parameters (which generated the data) were given as `finalAsymptoteIntensityRatio = 0.3, maximum = 10, slope1Param = 1, midPoint1Param = 7, slope2Param = 1, midPointDistanceParam = 8, h0 = 2`.
 
 We can recover the parameter estimates from both of the `doubleSigmoidalModel` objects created above.
 `fitObj_zero` does not return a value for $h_0$ (because it is not part of the estimation process).
@@ -135,13 +135,13 @@ The rest of the parameter values are nearly identical, but models with $h_0 = 0$
 
 ```{r}
 fitObj_zero$doubleSigmoidalModel |>
-  select(maximum_Estimate, slope1Param_Estimate, midPoint1Param_Estimate,
+  select(finalAsymptoteIntensityRatio_Estimate, maximum_Estimate, slope1Param_Estimate, midPoint1Param_Estimate,
          slope2Param_Estimate, midPointDistanceParam_Estimate) |> 
   c()
 
 
 fitObj_free$doubleSigmoidalModel |>
-  select(maximum_Estimate, slope1Param_Estimate, midPoint1Param_Estimate,
+  select(finalAsymptoteIntensityRatio_Estimate, maximum_Estimate, slope1Param_Estimate, midPoint1Param_Estimate,
          slope2Param_Estimate, midPointDistanceParam_Estimate, h0_Estimate) |> c()
 
 

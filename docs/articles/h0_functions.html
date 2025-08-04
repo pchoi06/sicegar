@@ -64,7 +64,7 @@
                         <h4 data-toc-skip class="author">Tommy Matheis,
 Phineus Choi, Sam Butler, Jo Hardin</h4>
             
-            <h4 data-toc-skip class="date">2025-08-01</h4>
+            <h4 data-toc-skip class="date">2025-08-04</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/hardin47/sicegar/blob/HEAD/vignettes/h0_functions.Rmd" class="external-link"><code>vignettes/h0_functions.Rmd</code></a></small>
       <div class="d-none name"><code>h0_functions.Rmd</code></div>
@@ -208,7 +208,7 @@ be fitted, calculating additional parameters using
 </h2>
 <p>Recall that the original model parameters (which generated the data)
 were given as
-<code>maximum = 10, slope1Param = 1, midPoint1Param = 7, slope2Param = 1, midPointDistanceParam = 8, h0 = 2</code>.</p>
+<code>finalAsymptoteIntensityRatio = 0.3, maximum = 10, slope1Param = 1, midPoint1Param = 7, slope2Param = 1, midPointDistanceParam = 8, h0 = 2</code>.</p>
 <p>We can recover the parameter estimates from both of the
 <code>doubleSigmoidalModel</code> objects created above.
 <code>fitObj_zero</code> does not return a value for
@@ -220,10 +220,13 @@ are fundamentally different from models with
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>h</mi><mn>0</mn></msub><mo>≠</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">h_0 \ne 0</annotation></semantics></math>.</p>
 <div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">fitObj_zero</span><span class="op">$</span><span class="va">doubleSigmoidalModel</span> <span class="op">|&gt;</span></span>
-<span>  <span class="fu">select</span><span class="op">(</span><span class="va">maximum_Estimate</span>, <span class="va">slope1Param_Estimate</span>, <span class="va">midPoint1Param_Estimate</span>,</span>
+<span>  <span class="fu">select</span><span class="op">(</span><span class="va">finalAsymptoteIntensityRatio_Estimate</span>, <span class="va">maximum_Estimate</span>, <span class="va">slope1Param_Estimate</span>, <span class="va">midPoint1Param_Estimate</span>,</span>
 <span>         <span class="va">slope2Param_Estimate</span>, <span class="va">midPointDistanceParam_Estimate</span><span class="op">)</span> <span class="op">|&gt;</span> </span>
 <span>  <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
-<pre><code><span><span class="co">## $maximum_Estimate</span></span>
+<pre><code><span><span class="co">## $finalAsymptoteIntensityRatio_Estimate</span></span>
+<span><span class="co">## [1] 0.1264636</span></span>
+<span><span class="co">## </span></span>
+<span><span class="co">## $maximum_Estimate</span></span>
 <span><span class="co">## [1] 10.13</span></span>
 <span><span class="co">## </span></span>
 <span><span class="co">## $slope1Param_Estimate</span></span>
@@ -239,9 +242,12 @@ are fundamentally different from models with
 <span><span class="co">## [1] 7.976228</span></span></code></pre>
 <div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">fitObj_free</span><span class="op">$</span><span class="va">doubleSigmoidalModel</span> <span class="op">|&gt;</span></span>
-<span>  <span class="fu">select</span><span class="op">(</span><span class="va">maximum_Estimate</span>, <span class="va">slope1Param_Estimate</span>, <span class="va">midPoint1Param_Estimate</span>,</span>
+<span>  <span class="fu">select</span><span class="op">(</span><span class="va">finalAsymptoteIntensityRatio_Estimate</span>, <span class="va">maximum_Estimate</span>, <span class="va">slope1Param_Estimate</span>, <span class="va">midPoint1Param_Estimate</span>,</span>
 <span>         <span class="va">slope2Param_Estimate</span>, <span class="va">midPointDistanceParam_Estimate</span>, <span class="va">h0_Estimate</span><span class="op">)</span> <span class="op">|&gt;</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
-<pre><code><span><span class="co">## $maximum_Estimate</span></span>
+<pre><code><span><span class="co">## $finalAsymptoteIntensityRatio_Estimate</span></span>
+<span><span class="co">## [1] 0.3080899</span></span>
+<span><span class="co">## </span></span>
+<span><span class="co">## $maximum_Estimate</span></span>
 <span><span class="co">## [1] 10.13</span></span>
 <span><span class="co">## </span></span>
 <span><span class="co">## $slope1Param_Estimate</span></span>

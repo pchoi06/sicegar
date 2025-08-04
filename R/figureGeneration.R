@@ -329,10 +329,8 @@ figureModelCurves <- function(dataInput,
 
 
   return(output)
-  }
 
-
-else{
+  }else{
   dataOutputVariable <- dataCheck(dataInput)
   sameSourceDataCheck(dataInput, sigmoidalFitVector, doubleSigmoidalFitVector)
   isalist <- (is.list(dataInput) & !is.data.frame(dataInput))
