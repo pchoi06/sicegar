@@ -56,7 +56,7 @@ the peer j article has been cited 46 times - Dimensions Badge, which is a free t
 
 ### Novel Contributions
 
-![Structure of the original and revised `fitAndCategorize` function](JOSS Graphic.png)
+![Structure of the original and revised `fitAndCategorize` function](JOSS_Graphic.png)
 
 # Example
 
