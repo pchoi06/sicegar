@@ -19,11 +19,11 @@ Categorize_h0(
 }
 \arguments{
 \item{parameterVectorSigmoidal}{A named list or data frame of sigmoidal fit parameters,
-produced by \code{\link{sigFit}} and
+produced by \code{\link{SigmoidalFitFunction_h0}} and
 \code{\link{parameterCalculation_h0}}.}
 
 \item{parameterVectorDoubleSigmoidal}{A named list or data.frame of double-sigmoidal fit
-parameters, produced by \code{\link{sigFit2}} and
+parameters, produced by \code{\link{doublesigmoidalFitFunction_h0}} and
 \code{\link{parameterCalculation_h0}}.}
 
 \item{threshold_intensity_range}{Numeric; minimum required intensity range to consider

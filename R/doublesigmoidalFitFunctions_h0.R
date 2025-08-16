@@ -185,7 +185,7 @@ doubleSigmoidalFitFormula_h0 <- function (x, finalAsymptoteIntensityRatio, maxim
 #'   `h0_Estimate`.
 #' @export
 #' @importFrom minpack.lm nlsLM
-sigFit2 <- function (
+doublesigmoidalFitFunction_h0 <- function (
     dataInput,
     tryCounter,
     startList = list(

@@ -75,9 +75,9 @@ sigmoidalRenormalizeParameters_h0 <- function(parameterDF, isalist) {
 #' @examples
 #' df <- data.frame(time = seq(0, 100, 10),
 #'                  intensity = runif(11, 0, 10))
-#' fit <- sigFit(df, tryCounter = 1)
+#' fit <- SigmoidalFitFunction_h0(df, tryCounter = 1)
 #' @export
-sigFit <- function(
+SigmoidalFitFunction_h0 <- function(
     dataInput,
     tryCounter,
     startList = list(h0 = 0, maximum = 1, slopeParam = 1, midPoint = 0.33),

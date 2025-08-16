@@ -19,8 +19,8 @@
 #' @param showDetails Logical; if TRUE, prints progress counters (best residual,
 #'   number of successful fits, etc.) after each successful fit.  Defaults to FALSE.
 #' @param ... Additional arguments passed to the underlying fitting function:
-#'   \code{\link{sigFit}} when `model = "sigmoidal"`, or
-#'   \code{\link{sigFit2}} when `model = "doublesigmoidal"`.
+#'   \code{\link{SigmoidalFitFunction_h0}} when `model = "sigmoidal"`, or
+#'   \code{\link{doublesigmoidalFitFunction_h0}} when `model = "doublesigmoidal"`.
 #'
 #' @return A named list (invisibly) with components:
 #'   * All fit parameters and goodness‐of‐fit metrics from the best run,
@@ -58,11 +58,11 @@ multipleFitFunction_h0 <- function (dataInput, dataInputName = NA, model, n_runs
          n_runs_max) {
     counterTotalFit <- counterTotalFit + 1
     if (model == "sigmoidal") {
-      modelOutput <- sigFit(dataInput = dataInput,
+      modelOutput <- SigmoidalFitFunction_h0(dataInput = dataInput,
                             tryCounter = counterTotalFit, ...)
     }
     if (model == "doublesigmoidal") {
-      modelOutput <- sigFit2(dataInput = dataInput,
+      modelOutput <- doublesigmoidalFitFunction_h0(dataInput = dataInput,
                              tryCounter = counterTotalFit, ...)
     }
     if (is.na(dataInputName)) {

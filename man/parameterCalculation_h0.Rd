@@ -8,7 +8,7 @@ parameterCalculation_h0(parameterVector, stepSize = 1e-05)
 }
 \arguments{
 \item{parameterVector}{A named list or data frame produced by
-\code{\link{sigFit}} or \code{\link{sigFit2}}, containing at minimum:
+\code{\link{SigmoidalFitFunction_h0}} or \code{\link{doublesigmoidalFitFunction_h0}}, containing at minimum:
 \describe{
   \item{\code{model}}{Either \dQuote{sigmoidal} or \dQuote{doublesigmoidal}.}
   \item{\code{*_Estimate}}{Raw parameter estimates (renormalized back to the original scale).}

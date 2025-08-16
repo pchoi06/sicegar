@@ -239,7 +239,7 @@ f_slope_doublesigmoidal_h0 <- function (x, parameterDf, timeStep = 1e-05)
 #'   model, calculates intuitively interpretable quantities (e.g. peak times,
 #'   slopes at midpoints, plateau heights) and appends them to the parameter list.
 #' @param parameterVector A named list or data frame produced by
-#'   \code{\link{sigFit}} or \code{\link{sigFit2}}, containing at minimum:
+#'   \code{\link{SigmoidalFitFunction_h0}} or \code{\link{doublesigmoidalFitFunction_h0}}, containing at minimum:
 #'   \describe{
 #'     \item{\code{model}}{Either \dQuote{sigmoidal} or \dQuote{doublesigmoidal}.}
 #'     \item{\code{*_Estimate}}{Raw parameter estimates (renormalized back to the original scale).}

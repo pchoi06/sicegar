@@ -35,8 +35,8 @@ Defaults to 500.}
 number of successful fits, etc.) after each successful fit.  Defaults to FALSE.}
 
 \item{...}{Additional arguments passed to the underlying fitting function:
-\code{\link{sigFit}} when `model = "sigmoidal"`, or
-\code{\link{sigFit2}} when `model = "doublesigmoidal"`.}
+\code{\link{SigmoidalFitFunction_h0}} when `model = "sigmoidal"`, or
+\code{\link{doublesigmoidalFitFunction_h0}} when `model = "doublesigmoidal"`.}
 }
 \value{
 A named list (invisibly) with components:
