@@ -210,20 +210,20 @@ f_mid2_doublesigmoidal_h0 <- function (parameterDf)
 #' @keywords internal
 f_slope_doublesigmoidal_h0 <- function (x, parameterDf, timeStep = 1e-05)
 {
-  fxp2h <- doubleSigmoidalFitFormula_h0(x = x + 2 * timeStep,
+  fxp2h <- doublesigmoidalFitFormula_h0(x = x + 2 * timeStep,
                                         finalAsymptoteIntensityRatio = parameterDf$finalAsymptoteIntensityRatio_Estimate,
                                         maximum = parameterDf$maximum_Estimate, slope1Param = parameterDf$slope1Param_Estimate,
                                         midPoint1Param = parameterDf$midPoint1Param_Estimate,
                                         slope2Param = parameterDf$slope2Param_Estimate, midPointDistanceParam = parameterDf$midPointDistanceParam_Estimate, h0 = parameterDf$h0_Estimate)
-  fxph <- doubleSigmoidalFitFormula_h0(x = x + timeStep, finalAsymptoteIntensityRatio = parameterDf$finalAsymptoteIntensityRatio_Estimate,
+  fxph <- doublesigmoidalFitFormula_h0(x = x + timeStep, finalAsymptoteIntensityRatio = parameterDf$finalAsymptoteIntensityRatio_Estimate,
                                        maximum = parameterDf$maximum_Estimate, slope1Param = parameterDf$slope1Param_Estimate,
                                        midPoint1Param = parameterDf$midPoint1Param_Estimate,
                                        slope2Param = parameterDf$slope2Param_Estimate, midPointDistanceParam = parameterDf$midPointDistanceParam_Estimate, h0 = parameterDf$h0_Estimate)
-  fxmh <- doubleSigmoidalFitFormula_h0(x = x - timeStep, finalAsymptoteIntensityRatio = parameterDf$finalAsymptoteIntensityRatio_Estimate,
+  fxmh <- doublesigmoidalFitFormula_h0(x = x - timeStep, finalAsymptoteIntensityRatio = parameterDf$finalAsymptoteIntensityRatio_Estimate,
                                        maximum = parameterDf$maximum_Estimate, slope1Param = parameterDf$slope1Param_Estimate,
                                        midPoint1Param = parameterDf$midPoint1Param_Estimate,
                                        slope2Param = parameterDf$slope2Param_Estimate, midPointDistanceParam = parameterDf$midPointDistanceParam_Estimate, h0 = parameterDf$h0_Estimate)
-  fxm2h <- doubleSigmoidalFitFormula_h0(x = x - 2 * timeStep,
+  fxm2h <- doublesigmoidalFitFormula_h0(x = x - 2 * timeStep,
                                         finalAsymptoteIntensityRatio = parameterDf$finalAsymptoteIntensityRatio_Estimate,
                                         maximum = parameterDf$maximum_Estimate, slope1Param = parameterDf$slope1Param_Estimate,
                                         midPoint1Param = parameterDf$midPoint1Param_Estimate,
@@ -277,7 +277,7 @@ parameterCalculation_h0 <- function (parameterVector, stepSize = 1e-05)
     parameterVector$maximum_x <- f_argmax_doublesigmoidal_h0(parameterVector)
     parameterVector$maximum_y <- parameterVector$maximum_Estimate
     parameterVector$midPoint1_x <- f_mid1_doublesigmoidal_h0(parameterVector)
-    parameterVector$midPoint1_y <- doubleSigmoidalFitFormula_h0(x = parameterVector$midPoint1_x,
+    parameterVector$midPoint1_y <- doublesigmoidalFitFormula_h0(x = parameterVector$midPoint1_x,
                                                                 finalAsymptoteIntensityRatio = parameterVector$finalAsymptoteIntensityRatio_Estimate,
                                                                 maximum = parameterVector$maximum_y, slope1Param = parameterVector$slope1Param_Estimate,
                                                                 midPoint1Param = parameterVector$midPoint1Param_Estimate,
@@ -285,7 +285,7 @@ parameterCalculation_h0 <- function (parameterVector, stepSize = 1e-05)
                                                                 midPointDistanceParam = parameterVector$midPointDistanceParam_Estimate,
                                                                 h0 = parameterVector$h0_Estimate)
     parameterVector$midPoint2_x <- f_mid2_doublesigmoidal_h0(parameterVector)
-    parameterVector$midPoint2_y <- doubleSigmoidalFitFormula_h0(x = parameterVector$midPoint2_x,
+    parameterVector$midPoint2_y <- doublesigmoidalFitFormula_h0(x = parameterVector$midPoint2_x,
                                                                 finalAsymptoteIntensityRatio = parameterVector$finalAsymptoteIntensityRatio_Estimate,
                                                                 maximum = parameterVector$maximum_y, slope1Param = parameterVector$slope1Param_Estimate,
                                                                 midPoint1Param = parameterVector$midPoint1Param_Estimate,

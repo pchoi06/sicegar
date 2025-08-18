@@ -101,7 +101,7 @@ Categorize_h0 <- function (parameterVectorSigmoidal, parameterVectorDoubleSigmoi
   decisionList$threshold_sm_tmax_IntensityRatio <- threshold_sm_tmax_IntensityRatio
   decisionList$test.sm_tmax_IntensityRatio <- decisionList$sm_tmax_IntensityRatio >
     threshold_sm_tmax_IntensityRatio
-  dsm_intensity_at_tmax <- doubleSigmoidalFitFormula_h0(x = timeRange,
+  dsm_intensity_at_tmax <- doublesigmoidalFitFormula_h0(x = timeRange,
                                                         finalAsymptoteIntensityRatio = parameterVectorDoubleSigmoidal$finalAsymptoteIntensityRatio_Estimate,
                                                         maximum = parameterVectorDoubleSigmoidal$maximum_y,
                                                         slope1Param = parameterVectorDoubleSigmoidal$slope1Param_Estimate,
@@ -125,7 +125,7 @@ Categorize_h0 <- function (parameterVectorSigmoidal, parameterVectorDoubleSigmoi
   decisionList$threshold_t0_max_int <- threshold_t0_max_int
   decisionList$test.sm_startIntensity <- decisionList$sm_startIntensity <
     threshold_t0_max_int
-  decisionList$dsm_startIntensity <- doubleSigmoidalFitFormula_h0(x = 0,
+  decisionList$dsm_startIntensity <- doublesigmoidalFitFormula_h0(x = 0,
                                                                   finalAsymptoteIntensityRatio = parameterVectorDoubleSigmoidal$finalAsymptoteIntensityRatio_Estimate,
                                                                   maximum = parameterVectorDoubleSigmoidal$maximum_y,
                                                                   slope1Param = parameterVectorDoubleSigmoidal$slope1Param_Estimate,

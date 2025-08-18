@@ -129,7 +129,7 @@ renormalizeParameters_h0 <- function(parameterDF, isalist) {
 #' @param h0                        Baseline when x is negative infinity.
 #' @return Numeric vector of same length as `x`.
 #' @export
-doubleSigmoidalFitFormula_h0 <- function (x, finalAsymptoteIntensityRatio, maximum, slope1Param,
+doublesigmoidalFitFormula_h0 <- function (x, finalAsymptoteIntensityRatio, maximum, slope1Param,
                                           midPoint1Param, slope2Param, midPointDistanceParam, h0)
 {
   if (slope1Param < 0) {
@@ -171,7 +171,7 @@ doubleSigmoidalFitFormula_h0 <- function (x, finalAsymptoteIntensityRatio, maxim
 
 #' Double‐sigmoidal NLS fit (with baseline h0)
 #'
-#' Fits `doubleSigmoidalFitFormula_h0()` to a `data.frame(time, intensity)`
+#' Fits `doublesigmoidalFitFormula_h0()` to a `data.frame(time, intensity)`
 #' via `minpack.lm::nlsLM()`, appending h0 and AIC/BIC.
 #'
 #' @param dataInput      data.frame or list with `$timeIntensityData`.
@@ -241,7 +241,7 @@ doublesigmoidalFitFunction_h0 <- function (
 
   theFitResult <- try(
     minpack.lm::nlsLM(
-      intensity ~ doubleSigmoidalFitFormula_h0(
+      intensity ~ doublesigmoidalFitFormula_h0(
         time,
         finalAsymptoteIntensityRatio,
         maximum,

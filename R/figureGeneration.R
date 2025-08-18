@@ -430,7 +430,7 @@ figureModelCurves <- function(dataInput,
       }
       time <- seq(fittedXmin_doublesigmoidal, fittedXmax_doublesigmoidal,
                   fittedXmax_doublesigmoidal/1000)
-      intensityTheoreticalDoubleSigmoidal <- doubleSigmoidalFitFormula_h0(time,
+      intensityTheoreticalDoubleSigmoidal <- doublesigmoidalFitFormula_h0(time,
                                                                           finalAsymptoteIntensityRatio = finalAsymptoteIntensityRatio,
                                                                           maximum = maximum_y, slope1Param = slope1Param,
                                                                           midPoint1Param = midPoint1Param, slope2Param = slope2Param,
